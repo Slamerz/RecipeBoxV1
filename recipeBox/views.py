@@ -61,11 +61,10 @@ def new_recipe(request):
     html = 'create_recipe.html'
 
     if request.method == 'POST':
-        form = CreateRecipeForm(request.user, request.POST)
+        form = CreateRecipeForm(request.POST)
 
         if form.is_valid():
             data = form.cleaned_data
-
             Recipe.objects.create(
                 title=data['title'],
                 author=data['author'],
